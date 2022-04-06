@@ -3,7 +3,7 @@
 int main() {
     int a, x, sum = 0;
 
-    if ((scanf("%d", &a)) != 1) {
+    if ((scanf("%d", &a)) != 1 || a < 0) {
         printf("n/a");
     } else {
         while (a != 0) {
