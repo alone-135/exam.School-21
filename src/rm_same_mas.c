@@ -1,53 +1,72 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int contains(int num, int arr2_size, int *arr2);
-int input(int* arr, int *arr_size);
+void rm_same(int* dataI, int* dataO, int sizeI, int* sizeO);
+int rm_same_check(int num, int* dataO, int sizeO);
+void output(int* dataO, int sizeO);
+int input(int* dataI, int* sizeI);
 
 int main() {
-    int arr[1024];
-    int arr_size = 0;
-    int arr2[1024];
-    int arr2_size = 0;
+    int dataI[1024];
+    int dataO[1024];
+    int sizeI = 0;
+    int sizeO = 0;
+    int ch;
 
-    if ((input(arr, &arr_size)) == 0) {
-        for (int i = 0; i < arr_size; i++) {
-            if ((contains(arr[i], arr2_size, arr2)) == 1) {
-                arr2[arr2_size] = arr[i];
-                arr2_size++;
-            }
-        }
-
-        for (int i = 0; i < arr2_size - 1; i++) {
-            printf("%d ", arr2[i]);
-        }
-        printf("%d", arr2[arr2_size - 1]);
-    } else {
+    ch = input(dataI, &sizeI);
+    if (ch == 1) {
         printf("n/a");
+    } else if (ch == 2) {
+        exit(0);
+    } else {
+        rm_same(dataI, dataO, sizeI, &sizeO);
+        output(dataO, sizeO);
     }
 
-  return 0;
+    return 0;
 }
 
-int input(int* arr, int *arr_size) {
-    int err = 0;
-    while (arr[*arr_size - 1] != -1) {
-        if ((scanf("%d", &arr[*arr_size])) != 1) {
-            err = 1;
-            break;
-        } else {
-            *arr_size = *arr_size + 1;
+void rm_same(int* dataI, int* dataO, int sizeI, int* sizeO) {
+    for (int i = 0; i < sizeI; i++) {
+        if (rm_same_check(dataI[i], dataO, *sizeO) == 1) {
+            dataO[*sizeO] = dataI[i];
+            *sizeO = *sizeO + 1;
         }
     }
-    *arr_size = *arr_size - 1;
-
-    return err;
 }
 
-int contains(int num, int arr2_size, int *arr2) {
-    for (int i = 0; i < arr2_size; i++) {
-        if (arr2[i] == num) {
+int rm_same_check(int num, int* dataO, int sizeO) {
+    for (int i = 0; i < sizeO; i++) {
+        if (dataO[i] == num) {
             return 0;
         }
     }
     return 1;
+}
+
+void output(int* dataO, int sizeO) {
+    for (int i = 0; i < sizeO - 1; i++) {
+        printf("%d ", dataO[i]);
+    }
+    printf("%d", dataO[sizeO - 1]);
+}
+
+int input(int* dataI, int* sizeI) {
+    int err = 0;
+
+    while (dataI[*sizeI - 1] != -1) {
+        if (scanf("%d", &dataI[*sizeI]) != 1) {
+            err = 1;
+            break;
+        } else {
+            *sizeI = *sizeI + 1;
+        }
+        if (dataI[0] == -1) {
+            err = 2;
+            break;
+        }
+    }
+    *sizeI = *sizeI - 1;
+
+    return err;
 }
