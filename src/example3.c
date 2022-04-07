@@ -3,7 +3,7 @@
 #include <string.h>
 
 void change(char *word, int n);
-void check(const char *word, int n, int * check);
+void check(const char *word, int n, int * ch);
 
 int main() {
     char word[1024+1];
@@ -14,10 +14,10 @@ int main() {
     change(word, n);
     check(word, n, &ch);
 
-    if (check == 1) {
+    if (ch == 1) {
         printf("Yes");
     } else {
-        printf("no");
+        printf("No");
     }
 
     return 0;
