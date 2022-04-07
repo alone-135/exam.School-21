@@ -6,7 +6,7 @@ void smena(char *word, int n);
 void proverka(char *word, int n, int * check);
 
 int main() {
-    char word[100];
+    char word[1024];
     scanf("%s", word);
     int n = strlen(word);
     int check = 1;
@@ -14,26 +14,27 @@ int main() {
     smena(word, n);
     proverka(word, n, &check);
 
-    if(check == 1) {
-        printf("yes");
+    if (check == 1) {
+        printf("Yes");
     } else {
         printf("No");
-
     }
 
+    return 0;
 }
-void smena(char *word, int n) {
-    for(int i = 0; i < n; i++) {
-        if (word[i] >64 && word[i] < 91) {
-            word[i] +=32;
+
+void smena(char* word, int n) {
+    for (int i = 0; i < n; i++) {
+        if (word[i] > 64 && word[i] < 91) {
+            word[i] += 32;
         }
     }
 }
 
-void proverka(char *word, int n, int * check) {
-    for(int i = 0; i < n; i++) 
-        if (word[i] != word [n-i-1]) {
+void proverka(char* word, int n, int* check) {
+    for (int i = 0; i < n; i++) {
+        if (word[i] != word[n - i - 1]) {
             *check = 0;
         }
-
+    }
 }
