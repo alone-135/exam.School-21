@@ -33,7 +33,7 @@ void change(char* word, int n) {
 }
 
 void check(const char *word, int n, int* ch) {
-    for (int i = 0; i < n / 2; i++) {
+    for (int i = 0; i < n; i++) {
         if (word[i] != word[n - i - 1]) {
             *ch = 0;
         }
