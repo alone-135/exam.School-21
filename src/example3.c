@@ -15,7 +15,11 @@ int main() {
     change(word, n);
     check(word, n, &ch);
 
- 
+    if(check == 1) {
+        printf("Yes");
+    } else {
+        printf("no");
+    }
 
     return 0;
 }
@@ -30,4 +34,10 @@ void change(char* word, int n) {
     }
 }
 
-voi
+void check(const char *word, int n, int* ch) {
+    for (int i = 0; i < n / 2; i++) {
+        if (word[i] != word[n - i - 1]) {
+            *ch = 0;
+        }
+    }
+}
