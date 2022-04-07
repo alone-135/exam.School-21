@@ -14,17 +14,17 @@ int main() {
     smena(word, n);
     proverka(word, n, &check);
 
-    if (check == 1) {
+    if(check == 1) {
         printf("Yes");
     } else {
-        printf("No");
+        printf("no");
     }
 
     return 0;
 }
 
 void smena(char* word, int n) {
-    for (int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++) {
         if (word[i] > 64 && word[i] < 91) {
             word[i] += 32;
         }
