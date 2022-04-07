@@ -14,10 +14,10 @@ int main() {
     change(word, n);
     check(word, n, &ch);
 
-    if (ch == 1) {
+    if(check == 1) {
         printf("Yes");
     } else {
-        printf("No");
+        printf("no");
     }
 
     return 0;
