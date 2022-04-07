@@ -3,11 +3,11 @@
 #include <string.h>
 
 void smena(char *word, int n);
-void proverka(char *word, int n, int * check);
+void proverka(const char *word, int n, int * check);
 
 int main() {
-    char word[100];
-    scanf("%s", word);
+    char word[101];
+    scanf("%100s", word);
     int n = strlen(word);
     int check = 1;
 
@@ -15,7 +15,7 @@ int main() {
     proverka(word, n, &check);
 
     if(check == 1) {
-        printf("yes");
+        printf("Yes");
     } else {
         printf("No");
 
@@ -30,7 +30,7 @@ void smena(char *word, int n) {
     }
 }
 
-void proverka(char *word, int n, int * check) {
+void proverka(const char *word, int n, int * check) {
     for(int i = 0; i < n; i++) 
         if (word[i] != word [n-i-1]) {
             *check = 0;
